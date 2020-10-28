@@ -66,5 +66,12 @@ describe('SauceReporter', function () {
         ['a', {'files': ['asset/one', 'asset/two']}]
       ]);
     });
+    it('should output err when upload failed', async function () {
+      prepareAssetsSpy.mockReturnValue(['asset/one', 'asset/two']);
+      await SauceReporter.sauceReporter('build', 'browser', {
+        spec: {name: 'MySpec'}, stats: {failures: 0}
+      });
+      console.log(uploadJobAssetsSpy.mock.call);
+    });
   });
 });

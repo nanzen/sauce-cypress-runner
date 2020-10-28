@@ -105,6 +105,7 @@ SauceReporter.sauceReporter = async (buildName, browserName, spec) => {
       { files: assets },
     ).then(
       (resp) => {
+        console.log('resp: ', resp);
         if (resp.errors) {
           for (let err of resp.errors) { console.warn(err); }
         }
